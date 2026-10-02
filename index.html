@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JuniorCodeAI</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 18px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #chat {
+      height: 70vh;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .message {
+      background: white;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 12px;
+    }
+
+    .user {
+      background: #dff1ff;
+    }
+
+    .input-area {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      padding: 10px;
+      display: flex;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    button {
+      margin-left: 8px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      background: #111;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>🤖 JuniorCodeAI</header>
+
+<div id="chat">
+  <div class="message">
+    👋 Hello! I'm JuniorCodeAI. How can I help you?
+  </div>
+</div>
+
+<div class="input-area">
+  <textarea id="message" placeholder="Ask JuniorCodeAI anything..."></textarea>
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+async function sendMessage() {
+  const input = document.getElementById("message");
+  const chat = document.getElementById("chat");
+
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  chat.innerHTML += `
+    <div class="message user">
+      <b>You:</b> ${message}
+    </div>
+  `;
+
+  input.value = "";
+
+  chat.innerHTML += `
+    <div class="message">
+      <b>JuniorCodeAI:</b> I'm thinking... 🤖
+    </div>
+  `;
+
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
